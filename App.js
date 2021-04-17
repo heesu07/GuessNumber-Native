@@ -32,13 +32,19 @@ export default function App() {
     setGuessRounds(numberOfRound);
   };
 
-  let content = !dataLoaded ? <AppLoading /> : <StartGameScreen onStartGame={startGameHandler}/>
-
-  if(userNumber && guessRounds <= 0) {
-    content = <GameScreen userChoice = {userNumber} onGameOver = {gameOverHandler} /> ;
-  }else if(guessRounds > 0 ){
-    content = <GameOverScreen answer ={userNumber} round={guessRounds} startAgain={configureNewGameHandler}/>;
+  let content;
+  if( !dataLoaded ){
+    content = <AppLoading />
+  }else{
+    content = <StartGameScreen onStartGame={startGameHandler}/>
+    if(userNumber && guessRounds <= 0) {
+      content = <GameScreen userChoice = {userNumber} onGameOver = {gameOverHandler} /> ;
+    }else if(guessRounds > 0 ){
+      content = <GameOverScreen answer ={userNumber} round={guessRounds} startAgain={configureNewGameHandler}/>;
+    }
   }
+  
+  
 
 
   return (    
