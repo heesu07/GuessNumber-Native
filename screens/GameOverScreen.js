@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, Text, Button, Image } from 'react-native';
+import { StyleSheet, View, Text, Button, Image, Dimensions } from 'react-native';
 import Card from '../components/Card';
 import TitleText from '../components/TitleText';
 import BodyText from '../components/BodyText';
@@ -20,8 +20,8 @@ const GameOverScreen = (props) => {
             resizeMethod= 'auto'
           />
         </View>
-        <BodyText> Number of Round: <Text style={styles.highlight}>{props.round} </Text> </BodyText>
-        <BodyText> Answer was <Text style={styles.highlight}>{props.answer}</Text></BodyText>
+        <BodyText style={styles.resultText}> Number of Round: <Text style={styles.highlight}>{props.round} </Text> </BodyText>
+        <BodyText style={styles.resultText}> Answer was <Text style={styles.highlight}>{props.answer}</Text></BodyText>
         <MainButton onPress={props.startAgain}> NEW GAME </MainButton>
       </Card>
     
@@ -39,13 +39,18 @@ const styles = StyleSheet.create({
     height: '100%',    
   },
   imageContainer: {
-    borderRadius: 150,
+    borderRadius:  Dimensions.get('window').width * 0.35,
     borderWidth: 3,
     borderColor: '#f7287b',
-    width: 300,
-    height: 300, 
+    width: Dimensions.get('window').width * 0.7,
+    height:  Dimensions.get('window').width * 0.7, 
     overflow: 'hidden',
-    margin: 10,
+    marginVertical: Dimensions.get('window').height /30 ,
+  },  
+  resultText: {
+    textAlign: 'center',
+    fontSize: Dimensions.get('window').height > 1000 ? 18 : 16,
+    marginBottom: 10,
   },
   highlight: {
     color: Colors.primary,

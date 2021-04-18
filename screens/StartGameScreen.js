@@ -5,7 +5,8 @@ import {
   Text, Button, 
   TouchableWithoutFeedback,
   Keyboard,
-  Alert
+  Alert,
+  Dimensions
 } from 'react-native';
 import { Colors } from 'react-native/Libraries/NewAppScreen';
 import Input from '../components/Input';
@@ -104,13 +105,7 @@ const styles = StyleSheet.create({
   input: {
     width: 100, 
     textAlign: 'center', 
-  },
-  buttonContainer: {    
-    flexDirection: 'row',    
-    justifyContent: 'center',
-    alignItems: 'center',
-    paddingHorizontal: 15
-  },
+  }, 
   card: {    
     shadowColor: 'black',
     shadowOffset: { width: 0, height: 2 },
@@ -121,10 +116,15 @@ const styles = StyleSheet.create({
     padding: 20,
     borderRadius: 10,
   },
-  button: {
-    paddingVertical: 10,
-    paddingHorizontal: 10,
-    flex: 1,
+  buttonContainer: {    
+    flexDirection: 'row',    
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    paddingHorizontal: 15,
+    width: '100%'
+  },
+  button: {    
+    width: Dimensions.get('window').width / 4 ,
   },
   summaryContainer: {
     marginTop: 20,
